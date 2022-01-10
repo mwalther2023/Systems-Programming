@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int binToDec(char* bin);
+char* decToBin(int dec);
+
+int main(){
+  int num = binToDec("11001");
+  char* bin = decToBin(25);
+
+  printf("Dec: %d\nBin: %s\n",num,bin);
+}
+
+int binToDec(char* bin){
+  int size = strlen(bin);
+  //printf("%d\n",size);
+  int num = 0;
+  int pt = 0;
+  for(int i = size-1; i>-1; i--){
+    //printf("Bin @ i: %d\n",bin[i]);
+    char temp = *(bin+i);
+    //if(strcmp(bin[i],"1") == 0){
+    if(bin[i] == 49){
+      int add = 1;
+      for(int x = 0; x<pt; x++){
+        add *= 2;
+      }
+      //printf("Add: %d\n",add);
+      num += add;
+      pt++;
+    }
+    //else if(strcmp(bin[i],"0") == 0){
+    else if(bin[i] == 48){
+      pt++;
+    }
+  }
+  return num;
+}
+char* decToBin(int dec){
+  char out[32];
+  int boo = 0;
+  int i = 0;
+  int add = 1;
+  int temp = dec;
+  for(int x = 0; x<33; i++){
+    add *= 2;
+  }
+  while(i<32 && boo == 0){
+    if((temp-add) >0){
+      out[i] = "1";
+      temp -= add;
+      add = add/2;
+    }
+    else if((temp-add)==0){
+      boo = 1;
+      out[i] = "1";
+      temp -= add;
+      add = add/2;
+    }
+    else{
+      out[i] = "0";
+      add = add/2;
+    }
+    i++;
+  }
+
+  char* done = out;
+  return done;
+}
