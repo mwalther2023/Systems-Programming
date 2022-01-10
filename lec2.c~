@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+void fill(int *b, int* cnt){
+  *cnt = 6;
+  for(int i = 0; i<*cnt; i++){
+    b[i] = i*2;
+  }
+}
+
+int main(){
+  int a[10];
+  int count;
+  fill(a, &count);
+
+  for(int i = 0; i<count; i++){
+    printf("In main: %d: %d\n",i,a[i]);
+  }
+  
+  return 0;
+}

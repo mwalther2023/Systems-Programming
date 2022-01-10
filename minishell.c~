@@ -189,6 +189,7 @@ int main(){
 	//printf("In Parent\n");
 	if(strcmp(args[n-1],"&") == 0){
 	  //printf("Found &\n");
+	  args[n-1] = args[n];
 	  and = 1;
 	  int result = waitpid(pid,&status,WNOHANG);
 	}
@@ -198,18 +199,13 @@ int main(){
       }
       else{
 	//printf("In Child: %d\n", pid);
-	
+	/*
 	if(strcmp(args[n-1],"&") == 0){
 	  //printf("Theres an &\n");
 	  args[n-1] = args[n];
-	  n--;
 	  //printf("Removed &: %s\n",args[n-1]);
 	}
-	printf("After Removing\n");
-	for(int i = 0; i<n; i++){
-	  printf("%s ",args[i]);
-	}
-	printf("\n");
+	*/
 	if((file = input(args,&n)) != NULL){
 	  printf("\tInput Child: %d\n",n);
 	  fp = freopen(file,"r",stdin);
